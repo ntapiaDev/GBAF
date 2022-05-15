@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit&display=swap");
 *, *::after, *::before {
   margin: 0;
   padding: 0;
@@ -5,8 +6,13 @@
           box-sizing: border-box;
 }
 
+html {
+  font-family: 'Outfit', sans-serif;
+}
+
 body {
   min-height: 100vh;
+  padding: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,5 +34,42 @@ header {
 
 header img {
   width: 50%;
+}
+
+.login {
+  text-align: center;
+}
+
+.login__form h1 {
+  margin: 0.5em;
+  font-size: 2em;
+}
+
+.login__form label, .login__form input, .login__form button {
+  width: 100%;
+  margin: 0.5em 0;
+  padding: 2px;
+}
+
+.login__form__checkbox input {
+  width: unset;
+}
+
+.login__links {
+  margin: 0.5em;
+}
+
+.error, .success {
+  padding: 5px;
+  background-color: rgba(220, 53, 69, 0.25);
+  border: 1px solid #dc3545;
+  border-radius: 5px;
+  color: #dc3545;
+}
+
+.success {
+  background-color: rgba(40, 167, 69, 0.25);
+  border: 1px solid #28a745;
+  color: #28a745;
 }
 /*# sourceMappingURL=style.css.map */

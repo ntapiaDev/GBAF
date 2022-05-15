@@ -3,41 +3,42 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+    <section class="login">
+        <form method="post" class="login__form">
+            {% if error %}
+                <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% elseif app.user %}
+                <div class="success">Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('logout') }}">Se déconnecter</a></div>
+            {% else %}
+                <div class="error">Connexion requise pour accéder au site.</div>
+            {% endif %}
 
-        {% if app.user %}
-            <div class="">
-                Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('logout') }}">Logout</a>
-            </div>
-        {% endif %}
+            <h1 class="">Connexion</h1>
 
-        <h1 class="">Connexion</h1>
-        <div class="form-row">
             <label for="inputUsername">Identifiant:</label>
             <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="" autocomplete="username" required autofocus>
-        </div>
-        <div class="form-row">
+ 
             <label for="inputPassword">Mot de passe:</label>
             <input type="password" name="password" id="inputPassword" class="" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+
+            <div class="login__form__checkbox">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Se souvenir de moi ?
+                </label>
+            </div>
+
+            <button class="" type="submit">
+                Me connecter
+            </button>
+        </form>
+
+        <div class="login__links">
+            <p><a href="">J'ai oublié mon mot de passe...</a></p>
+            <p><a href="{{ path('register') }}">Créer un compte</a></p>
         </div>
-        <input type="hidden" name="_csrf_token"
-            value="{{ csrf_token('authenticate') }}"
-        >
-
-        <div class="">
-            <label>
-                <input type="checkbox" name="_remember_me"> Se souvenir de moi ?
-            </label>
-        </div>
-
-        <button class="" type="submit">
-            Me connecter
-        </button>
-    </form>
-
-    <p><a href="">J'ai oublié mon mot de passe...</a></p>
-    <p><a href="{{ path('register') }}">Créer un compte</a></p>
+    </section>
 {% endblock %}
