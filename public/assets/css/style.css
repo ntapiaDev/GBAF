@@ -36,26 +36,26 @@ header img {
   width: 50%;
 }
 
-.login {
+.login, .register {
   text-align: center;
 }
 
-.login__form h1 {
+.login h1, .register h1 {
   margin: 0.5em;
   font-size: 2em;
 }
 
-.login__form label, .login__form input, .login__form button {
+.login__form label, .login__form input, .login__form select, .login__form button, .register__form label, .register__form input, .register__form select, .register__form button {
   width: 100%;
   margin: 0.5em 0;
   padding: 2px;
 }
 
-.login__form__checkbox input {
+.login__form__checkbox input, .register__form__checkbox input {
   width: unset;
 }
 
-.login__links {
+.login__links, .register__links {
   margin: 0.5em;
 }
 

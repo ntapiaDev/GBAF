@@ -28,15 +28,15 @@ header {
 
 //Page de login
 
-.login {
+.login, .register {
     text-align: center;
-
+    
+    h1 {
+        margin: 0.5em;
+        font-size: 2em;
+    }
     &__form {
-        h1 {
-            margin: 0.5em;
-            font-size: 2em;
-        }
-        label, input, button {
+        label, input, select, button {
             width: 100%;
             margin: 0.5em 0;
             padding: 2px;
