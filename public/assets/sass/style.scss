@@ -26,13 +26,72 @@ header {
     }
 }
 
-//Page de login
+//Header
+
+header {
+    p {
+        margin: 0.5em 0;
+    }
+}
+
+//Home
+
+.home {
+
+    &__gbaf {
+        h1 {
+        margin: 0.5em 0;
+        text-align: center;
+        font-size: 2em;
+        }
+        p {
+            margin: 10px 0;
+        }
+        li {
+            margin: 10px 25px;
+        }
+    }
+
+    &__partners {
+        article {
+            margin: 1em 0;
+        }
+        h2, h3 {
+            margin: 0.5em 0;
+            text-align: center;
+        }
+        img {
+            width: 100%;
+        }
+        li {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+        a {
+            margin: 0.5em 0;
+            display: block;
+            text-align: end;
+        }
+        &__description {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            *:not(:first-child) {
+                display: none;
+            }
+        }
+    }
+}
+
+//Page de login & register
 
 .login, .register {
     text-align: center;
     
     h1 {
-        margin: 0.5em;
+        margin: 0.5em 0;
         font-size: 2em;
     }
     &__form {
@@ -48,7 +107,7 @@ header {
         }
     }
     &__links {
-        margin: 0.5em;
+        margin: 0.5em 0;
     }
 }
 

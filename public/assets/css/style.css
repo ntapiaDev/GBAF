@@ -36,12 +36,66 @@ header img {
   width: 50%;
 }
 
+header p {
+  margin: 0.5em 0;
+}
+
+.home__gbaf h1 {
+  margin: 0.5em 0;
+  text-align: center;
+  font-size: 2em;
+}
+
+.home__gbaf p {
+  margin: 10px 0;
+}
+
+.home__gbaf li {
+  margin: 10px 25px;
+}
+
+.home__partners article {
+  margin: 1em 0;
+}
+
+.home__partners h2, .home__partners h3 {
+  margin: 0.5em 0;
+  text-align: center;
+}
+
+.home__partners img {
+  width: 100%;
+}
+
+.home__partners li {
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.home__partners a {
+  margin: 0.5em 0;
+  display: block;
+  text-align: end;
+}
+
+.home__partners__description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.home__partners__description *:not(:first-child) {
+  display: none;
+}
+
 .login, .register {
   text-align: center;
 }
 
 .login h1, .register h1 {
-  margin: 0.5em;
+  margin: 0.5em 0;
   font-size: 2em;
 }
 
@@ -56,7 +110,7 @@ header img {
 }
 
 .login__links, .register__links {
-  margin: 0.5em;
+  margin: 0.5em 0;
 }
 
 .error, .success {

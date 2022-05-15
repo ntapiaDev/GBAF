@@ -18,8 +18,8 @@
         <header>
             <a href="{{ path('home') }}"><img src="{{ asset('assets/img/gbaf.png') }}" alt="Extranet GBAF"></a>
             {% if app.user %}
+                <p>{{ app.user.lastname }} {{ app.user.firstname }}</p>
                 <nav>
-                    {{ app.user.lastname }} {{ app.user.firstname }}
                     {% if app.user.roles[0] == 'ROLE_ADMIN' %}
                         <a href="{{ path('admin') }}">Administration du site</a>
                     {% endif %}
