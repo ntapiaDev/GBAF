@@ -15,11 +15,14 @@
         {% endif %}
 
         <h1 class="">Connexion</h1>
-        <label for="inputUsername">Identifiant:</label>
-        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="" autocomplete="username" required autofocus>
-        <label for="inputPassword">Mot de passe:</label>
-        <input type="password" name="password" id="inputPassword" class="" autocomplete="current-password" required>
-
+        <div class="form-row">
+            <label for="inputUsername">Identifiant:</label>
+            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="" autocomplete="username" required autofocus>
+        </div>
+        <div class="form-row">
+            <label for="inputPassword">Mot de passe:</label>
+            <input type="password" name="password" id="inputPassword" class="" autocomplete="current-password" required>
+        </div>
         <input type="hidden" name="_csrf_token"
             value="{{ csrf_token('authenticate') }}"
         >

@@ -11,7 +11,7 @@
         <h2>Liste des partenaires :</h2>
         {% for partner in partners %}
             <article>
-                <img src="/uploads/{{ partner.logo }}" alt="">
+                <img src="/uploads/{{ partner.logo }}" alt="{{ partner.partner }}">
                 <h3>{{ partner.partner }}</h3>
                 <p>{{ partner.description|raw }}</p>
                 <a href="{{ path('partner', { 'slug' : partner.slug }) }}">Lire la suite</a>

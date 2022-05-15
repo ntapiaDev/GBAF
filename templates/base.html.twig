@@ -16,16 +16,23 @@
     </head>
     <body>
         <header>
+            <a href="{{ path('home') }}"><img src="{{ asset('assets/img/gbaf.png') }}" alt="Extranet GBAF"></a>
             {% if app.user %}
-            {{ app.user.lastname }} {{ app.user.firstname }}
-            <a href="{{ path('logout') }}">Se déconnecter</a>
+                <nav>
+                    {{ app.user.lastname }} {{ app.user.firstname }}
+                    {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                        <a href="{{ path('admin') }}">Administration du site</a>
+                    {% endif %}
+                    <a href="{{ path('profile') }}">Mon profil</a>
+                    <a href="{{ path('logout') }}">Se déconnecter</a>
+                </nav>
             {% endif %}
         </header>
         <main>
             {% block body %}{% endblock %}
         </main>
         <footer>
-            Ceci est le footer
+            <p>| Mentions légales | Contact |</p>
         </footer>
     </body>
 </html>
