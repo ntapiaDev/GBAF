@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ partner.partner }}{% endblock %}
+
+{% block body %}
+    <section>
+        <h2>{{ partner.partner }}</h2>
+            <article>
+                <img src="/uploads/{{ partner.logo }}" alt="">
+                <h3>{{ partner.partner }}</h3>
+                <p>{{ partner.description|raw }}</p>
+            </article>
+    </section>
+{% endblock %}

@@ -6,4 +6,16 @@
     <section>
         <h1>Bienvenue sur le site de la GBAF !</h1>
     </section>
+
+    <section>
+        <h2>Liste des partenaires :</h2>
+        {% for partner in partners %}
+            <article>
+                <img src="/uploads/{{ partner.logo }}" alt="">
+                <h3>{{ partner.partner }}</h3>
+                <p>{{ partner.description|raw }}</p>
+                <a href="{{ path('partner', { 'slug' : partner.slug }) }}">Lire la suite</a>
+            </article>
+        {% endfor %}
+    </section>
 {% endblock %}

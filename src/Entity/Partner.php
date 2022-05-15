@@ -30,6 +30,9 @@ class Partner
     #[ORM\OneToMany(mappedBy: 'partner_id', targetEntity: Note::class, orphanRemoval: true)]
     private $notes;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $slug;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -133,6 +136,18 @@ class Partner
                 $note->setPartnerId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
