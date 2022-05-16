@@ -11,14 +11,26 @@
             {{ form_row(form.lastname) }}
             {{ form_row(form.firstname) }}
             {{ form_row(form.username) }}
+            {{ form_row(form.question) }}
+            {{ form_row(form.answer) }}
+            {{ form_row(form.password) }}
 
             <button type="submit" class="">Mettre à jour</button>
 
             {% for message in app.flashes('success') %}
                 <p class="success">{{ message }}</p>
             {% endfor %}
-            
+            {% for message in app.flashes('warning') %}
+                <p class="error">{{ message }}</p>
+            {% endfor %}
+
         {{ form_end(form) }}
 
     </section>
+    <aside class="profil__notes">
+        <h2>Mes notes</h2>
+    </aside>
+    <aside class="profil__comments">
+        <h2>Mes commentaires</h2>
+    </aside>
 {% endblock %}
