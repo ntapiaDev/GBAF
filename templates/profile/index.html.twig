@@ -4,7 +4,9 @@
 
 {% block body %}
     <section class="profil">
-        <h1>Mon profil</h1>
+        <h1>Profil</h1>
+        <hr>
+        <h2>Informations personnelles</h2>
 
         {{ form_start(form, {'attr': {'class': 'profil__form'}}) }}
 
@@ -17,20 +19,40 @@
 
             <button type="submit" class="">Mettre à jour</button>
 
-            {% for message in app.flashes('success') %}
+            {% for message in app.flashes('edit_success') %}
                 <p class="success">{{ message }}</p>
             {% endfor %}
-            {% for message in app.flashes('warning') %}
+            {% for message in app.flashes('edit_warning') %}
                 <p class="error">{{ message }}</p>
             {% endfor %}
 
         {{ form_end(form) }}
 
+        <hr>
+        <h2>Modifier mon mot de passe</h2>
+
+        {{ form_start(pwForm, {'attr': {'class': 'profil__form'}}) }}
+
+            {{ form_row(pwForm.old_password) }}
+            {{ form_row(pwForm.new_password) }}
+
+            <button type="submit" class="">Mettre à jour</button>
+
+            {% for message in app.flashes('pw_success') %}
+                <p class="success">{{ message }}</p>
+            {% endfor %}
+            {% for message in app.flashes('pw_warning') %}
+                <p class="error">{{ message }}</p>
+            {% endfor %}
+
+        {{ form_end(pwForm) }}
+
+        <hr>
     </section>
     <aside class="profil__notes">
-        <h2>Mes notes</h2>
+        <h3>Mes notes</h3>
     </aside>
     <aside class="profil__comments">
-        <h2>Mes commentaires</h2>
+        <h3>Mes commentaires</h3>
     </aside>
 {% endblock %}
