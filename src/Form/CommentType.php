@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Comment;
+use App\Entity\Partner;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -26,6 +29,19 @@ class CommentType extends AbstractType
             ->add('send', SubmitType::class, [
                 'label' => 'Envoyer'
             ])
+        ;
+
+        $builder->get('partner')
+            ->addModelTransformer(new CallbackTransformer(
+                fn (Partner $partner) => $partner->getId(),
+                fn (Partner $partner) => $partner->getPartner()
+            ))
+        ;
+        $builder->get('user')
+            ->addModelTransformer(new CallbackTransformer(
+                fn (User $user) => $user->getId(),
+                fn (User $user) => $user->getUsername()
+            ))
         ;
     }
 

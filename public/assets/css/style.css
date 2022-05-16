@@ -167,6 +167,10 @@ main {
   height: 75px;
 }
 
+.comment-btn:hover {
+  cursor: pointer;
+}
+
 .profil h2 {
   margin: 0.5em 0;
 }

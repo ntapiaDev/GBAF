@@ -54,5 +54,8 @@
     </aside>
     <aside class="profil__comments">
         <h3>Mes commentaires</h3>
+        {% for comment in comments %}
+            <p><a href="{{ path('partner', { 'slug' : comment.partner.slug }) }}#comment_{{ comment.id }}">{{ comment.partner }} - {{ comment.comment }} - créé le {{ comment.createdAt.format('d/m/Y à H:i:s') }}</a></p>
+        {% endfor %}
     </aside>
 {% endblock %}

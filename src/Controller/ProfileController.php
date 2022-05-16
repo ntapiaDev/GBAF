@@ -67,9 +67,12 @@ class ProfileController extends AbstractController
             }
         }
 
+        $comments = $user->getComments();
+
         return $this->render('profile/index.html.twig', [
             'form' => $form->createView(),
-            'pwForm' => $pwForm->createView()
+            'pwForm' => $pwForm->createView(),
+            'comments' => $comments
         ]);
     }
 }
