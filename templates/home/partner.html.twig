@@ -10,12 +10,15 @@
                 <p>{{ partner.description|raw }}</p>
             </article>
             <aside>
+                {{ form(commentForm) }}
+
                 <div class="home__partner__links">
-                    <p>3 commentaires</p>
+                    <p>{{ partner.comments|length }} commentaires</p>
                     <a href="">Nouveau commentaire</a>
                     <div>2 <span class="fa-solid fa-thumbs-up"></span></div>
                     <div>1 <span class="fa-solid fa-thumbs-down"></span></div>
                 </div>
+
                 <div class="home__partner__comment">
                     <p><strong>Prénom :</strong> John</p>
                     <p><strong>Date :</strong> 16 mai 2022 à 08h35</p>

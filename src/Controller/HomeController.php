@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
+use App\Form\CommentType;
 use App\Repository\PartnerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,9 +25,14 @@ class HomeController extends AbstractController
     public function show(PartnerRepository $partnerRepository, $slug): Response
     {
         $partner = $partnerRepository->findOneBySlug($slug);
+        $user = $this->getUser();
+
+        $comment = new Comment($partner, $user);
+        $commentForm = $this->createForm(CommentType::class, $comment);
 
         return $this->render('home/partner.html.twig', [
-            'partner' => $partner
+            'partner' => $partner,
+            'commentForm' => $commentForm->createView()
         ]);
     }
 }

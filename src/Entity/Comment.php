@@ -27,6 +27,12 @@ class Comment
     #[ORM\Column(type: 'text')]
     private $comment;
 
+    public function __construct(Partner $partner_id, User $user_id)
+    {
+        $this->partner_id = $partner_id;
+        $this->user_id = $user_id;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
