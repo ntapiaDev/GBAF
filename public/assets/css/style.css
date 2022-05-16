@@ -60,21 +60,21 @@ main {
   width: 100%;
 }
 
-.home__gbaf h1 {
+.home__gbaf h1, .profil__gbaf h1 {
   margin: 0.5em 0;
   text-align: center;
   font-size: 2em;
 }
 
-.home__gbaf p {
+.home__gbaf p, .profil__gbaf p {
   margin: 10px 0;
 }
 
-.home__gbaf li {
+.home__gbaf li, .profil__gbaf li {
   margin: 10px 25px;
 }
 
-.home__partners article, .home__partners aside, .home__partner article, .home__partner aside {
+.home__partners article, .home__partners aside, .home__partner article, .home__partner aside, .profil__partners article, .profil__partners aside, .profil__partner article, .profil__partner aside {
   margin: 1em 0;
   padding: 0.5em;
   background-color: #FFF;
@@ -82,30 +82,30 @@ main {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.home__partners h2, .home__partners h3, .home__partner h2, .home__partner h3 {
+.home__partners h2, .home__partners h3, .home__partner h2, .home__partner h3, .profil__partners h2, .profil__partners h3, .profil__partner h2, .profil__partner h3 {
   margin: 0.5em 0;
   text-align: center;
   font-size: 1.5em;
 }
 
-.home__partners h3, .home__partner h3 {
+.home__partners h3, .home__partner h3, .profil__partners h3, .profil__partner h3 {
   font-size: 1.25em;
 }
 
-.home__partners img, .home__partner img {
+.home__partners img, .home__partner img, .profil__partners img, .profil__partner img {
   width: 100%;
 }
 
-.home__partners hr, .home__partner hr {
+.home__partners hr, .home__partner hr, .profil__partners hr, .profil__partner hr {
   margin: 0.5em 0;
 }
 
-.home__partners li, .home__partner li {
+.home__partners li, .home__partner li, .profil__partners li, .profil__partner li {
   margin-left: 25px;
   margin-top: 10px;
 }
 
-.home__partners__description, .home__partner__description {
+.home__partners__description, .home__partner__description, .profil__partners__description, .profil__partner__description {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -113,11 +113,11 @@ main {
   -webkit-box-orient: vertical;
 }
 
-.home__partners__description *:not(:first-child), .home__partner__description *:not(:first-child) {
+.home__partners__description *:not(:first-child), .home__partner__description *:not(:first-child), .profil__partners__description *:not(:first-child), .profil__partner__description *:not(:first-child) {
   display: none;
 }
 
-.home__partners__links, .home__partner__links {
+.home__partners__links, .home__partner__links, .profil__partners__links, .profil__partner__links {
   margin: 0.5em 0 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -127,7 +127,7 @@ main {
           justify-content: space-between;
 }
 
-.home__partners__links div, .home__partners__links p, .home__partners__links a, .home__partner__links div, .home__partner__links p, .home__partner__links a {
+.home__partners__links div, .home__partners__links p, .home__partners__links a, .home__partner__links div, .home__partner__links p, .home__partner__links a, .profil__partners__links div, .profil__partners__links p, .profil__partners__links a, .profil__partner__links div, .profil__partner__links p, .profil__partner__links a {
   padding: 5px;
   border: 1px solid #DDD;
   border-radius: 10px;
@@ -136,7 +136,7 @@ main {
   font-size: 0.8em;
 }
 
-.home__partner__comment {
+.home__partner__comment, .profil__partner__comment {
   margin: 0.5em 0;
   padding: 5px;
   border: 1px solid #DDD;
@@ -145,25 +145,30 @@ main {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.home__partner__commentForm {
+.home__partner__comment hr, .profil__partner__comment hr {
+  margin: 0.5em 0;
+  border: 1px dashed rgba(24, 24, 24, 0.25);
+}
+
+.home__partner__commentForm, .profil__partner__commentForm {
   height: 0;
   overflow: hidden;
   -webkit-transition: height 0.3s;
   transition: height 0.3s;
 }
 
-.home__partner__commentForm.visible {
+.home__partner__commentForm.visible, .profil__partner__commentForm.visible {
   height: 150px;
 }
 
-.home__partner__commentForm label, .home__partner__commentForm button, .home__partner__commentForm textarea {
+.home__partner__commentForm label, .home__partner__commentForm button, .home__partner__commentForm textarea, .profil__partner__commentForm label, .profil__partner__commentForm button, .profil__partner__commentForm textarea {
   display: block;
   width: 100%;
   margin: 0.5em 0;
   padding: 2px;
 }
 
-.home__partner__commentForm textarea {
+.home__partner__commentForm textarea, .profil__partner__commentForm textarea {
   height: 75px;
 }
 
@@ -171,12 +176,16 @@ main {
   cursor: pointer;
 }
 
-.profil h2 {
+.profil h2, .profil hr {
   margin: 0.5em 0;
 }
 
-.profil hr {
-  margin-top: 0.5em;
+.profil__notes, .profil__comments {
+  margin: 1em 0;
+  padding: 0.5em;
+  background-color: #FFF;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .login, .register, .profil {
