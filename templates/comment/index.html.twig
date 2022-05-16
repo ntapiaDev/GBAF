@@ -1,0 +1,6 @@
+<div id="comment_{{ comment.id }}" class="home__partner__comment">
+    <p><strong>Prénom :</strong> {{ comment.user.username }}</p>
+    <p><strong>Date :</strong> {{ comment.createdAt|date('d M Y à H:i:s') }}</p>
+    <hr>
+    <p><strong>Commentaire :</strong> {{ comment.comment }}</p>
+</div>

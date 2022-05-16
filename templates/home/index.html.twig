@@ -29,7 +29,7 @@
                 <div class="home__partners__links">
                     <div>0 <span class="fa-solid fa-thumbs-up"></span></div>
                     <div>0 <span class="fa-solid fa-thumbs-down"></span></div>
-                    <p>0 commentaires</p>
+                    <p>{{ partner.comments|length }} commentaires</p>
                     <a href="{{ path('partner', { 'slug' : partner.slug }) }}">Lire la suite</a>
                 </div>
             </article>

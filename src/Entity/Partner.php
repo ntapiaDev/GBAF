@@ -24,7 +24,7 @@ class Partner
     #[ORM\Column(type: 'string', length: 255)]
     private $logo;
 
-    #[ORM\OneToMany(mappedBy: 'partner_id', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'partner', targetEntity: Comment::class, orphanRemoval: true)]
     private $comments;
 
     #[ORM\OneToMany(mappedBy: 'partner_id', targetEntity: Note::class, orphanRemoval: true)]
@@ -92,7 +92,7 @@ class Partner
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
-            $comment->setPartnerId($this);
+            $comment->setPartner($this);
         }
 
         return $this;
@@ -102,8 +102,8 @@ class Partner
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($comment->getPartnerId() === $this) {
-                $comment->setPartnerId(null);
+            if ($comment->getPartner() === $this) {
+                $comment->setPartner(null);
             }
         }
 

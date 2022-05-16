@@ -40,7 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $answer;
 
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
     private $comments;
 
     #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Note::class, orphanRemoval: true)]
@@ -182,7 +182,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
-            $comment->setUserId($this);
+            $comment->setUser($this);
         }
 
         return $this;
@@ -192,8 +192,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($comment->getUserId() === $this) {
-                $comment->setUserId(null);
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
             }
         }
 

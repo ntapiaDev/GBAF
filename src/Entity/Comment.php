@@ -15,11 +15,11 @@ class Comment
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private $user_id;
+    private $user;
 
     #[ORM\ManyToOne(targetEntity: Partner::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private $partner_id;
+    private $partner;
 
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private $created_at;
@@ -27,10 +27,10 @@ class Comment
     #[ORM\Column(type: 'text')]
     private $comment;
 
-    public function __construct(Partner $partner_id, User $user_id)
+    public function __construct(Partner $partner, User $user)
     {
-        $this->partner_id = $partner_id;
-        $this->user_id = $user_id;
+        $this->partner = $partner;
+        $this->user = $user;
     }
 
     public function getId(): ?int
@@ -38,26 +38,26 @@ class Comment
         return $this->id;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?User
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUser(?User $user): self
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getPartnerId(): ?Partner
+    public function getPartner(): ?Partner
     {
-        return $this->partner_id;
+        return $this->partner;
     }
 
-    public function setPartnerId(?Partner $partner_id): self
+    public function setPartner(?Partner $partner): self
     {
-        $this->partner_id = $partner_id;
+        $this->partner = $partner;
 
         return $this;
     }

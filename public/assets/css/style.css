@@ -145,6 +145,28 @@ main {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
+.home__partner__commentForm {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.3s;
+  transition: height 0.3s;
+}
+
+.home__partner__commentForm.visible {
+  height: 150px;
+}
+
+.home__partner__commentForm label, .home__partner__commentForm button, .home__partner__commentForm textarea {
+  display: block;
+  width: 100%;
+  margin: 0.5em 0;
+  padding: 2px;
+}
+
+.home__partner__commentForm textarea {
+  height: 75px;
+}
+
 .profil h2 {
   margin: 0.5em 0;
 }

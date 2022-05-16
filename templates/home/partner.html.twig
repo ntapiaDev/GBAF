@@ -10,32 +10,19 @@
                 <p>{{ partner.description|raw }}</p>
             </article>
             <aside>
-                {{ form(commentForm) }}
-
                 <div class="home__partner__links">
-                    <p>{{ partner.comments|length }} commentaires</p>
-                    <a href="">Nouveau commentaire</a>
+                    <p><span class="comment-count">{{ partner.comments|length }}</span> commentaires</p>
+                    <p class="comment-btn">Nouveau commentaire</p>
                     <div>2 <span class="fa-solid fa-thumbs-up"></span></div>
                     <div>1 <span class="fa-solid fa-thumbs-down"></span></div>
                 </div>
-
-                <div class="home__partner__comment">
-                    <p><strong>Prénom :</strong> John</p>
-                    <p><strong>Date :</strong> 16 mai 2022 à 08h35</p>
-                    <hr>
-                    <p><strong>Commentaire :</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam maiores pariatur possimus. Eligendi, maxime pariatur.</p>
+                <div class="home__partner__commentForm">
+                    {{ form(commentForm, { 'attr':  { 'class': 'comment-form'}}) }}
                 </div>
-                <div class="home__partner__comment">
-                    <p><strong>Prénom :</strong> Pierre</p>
-                    <p><strong>Date :</strong> 16 mai 2022 à 08h52</p>
-                    <hr>
-                    <p><strong>Commentaire :</strong> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam a possimus nisi temporibus corporis velit.</p>
-                </div>
-                <div class="home__partner__comment">
-                    <p><strong>Prénom :</strong> Matthieu</p>
-                    <p><strong>Date :</strong> 16 mai 2022 à 09h12</p>
-                    <hr>
-                    <p><strong>Commentaire :</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perspiciatis excepturi, cumque officiis velit natus!</p>
+                <div class="comment-list">
+                    {% for comment in partner.comments|reverse %}
+                        {% include 'comment/index.html.twig' with [comment] %}
+                    {% endfor %}
                 </div>
             </aside>
     </section>

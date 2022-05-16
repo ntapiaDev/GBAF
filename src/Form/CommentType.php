@@ -17,11 +17,11 @@ class CommentType extends AbstractType
         $builder
 
             ->add('comment', TextareaType::class, [
-                'label' => 'Votre commentaire'
+                'label' => 'Votre commentaire :'
             ])
 
-            ->add('partner_id', HiddenType::class)
-            ->add('user_id', HiddenType::class)
+            ->add('partner', HiddenType::class)
+            ->add('user', HiddenType::class)
 
             ->add('send', SubmitType::class, [
                 'label' => 'Envoyer'
@@ -32,7 +32,8 @@ class CommentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Comment::class
+            'data_class' => Comment::class,
+            'csrf_token_id' => 'comment-add'
         ]);
     }
 }
