@@ -68,7 +68,7 @@ header p {
   margin: 10px 25px;
 }
 
-.home__partners article {
+.home__partners article, .home__partners aside, .home__partner article, .home__partner aside {
   margin: 1em 0;
   padding: 0.5em;
   background-color: #FFF;
@@ -76,30 +76,30 @@ header p {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.home__partners h2, .home__partners h3 {
+.home__partners h2, .home__partners h3, .home__partner h2, .home__partner h3 {
   margin: 0.5em 0;
   text-align: center;
   font-size: 1.5em;
 }
 
-.home__partners h3 {
+.home__partners h3, .home__partner h3 {
   font-size: 1.25em;
 }
 
-.home__partners img {
+.home__partners img, .home__partner img {
   width: 100%;
 }
 
-.home__partners hr {
+.home__partners hr, .home__partner hr {
   margin: 0.5em 0;
 }
 
-.home__partners li {
+.home__partners li, .home__partner li {
   margin-left: 25px;
   margin-top: 10px;
 }
 
-.home__partners__description {
+.home__partners__description, .home__partner__description {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -107,11 +107,11 @@ header p {
   -webkit-box-orient: vertical;
 }
 
-.home__partners__description *:not(:first-child) {
+.home__partners__description *:not(:first-child), .home__partner__description *:not(:first-child) {
   display: none;
 }
 
-.home__partners__links {
+.home__partners__links, .home__partner__links {
   margin: 0.5em 0 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -121,7 +121,17 @@ header p {
           justify-content: space-between;
 }
 
-.home__partners__links div, .home__partners__links p, .home__partners__links a {
+.home__partners__links div, .home__partners__links p, .home__partners__links a, .home__partner__links div, .home__partner__links p, .home__partner__links a {
+  padding: 5px;
+  border: 1px solid #DDD;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  font-size: 0.8em;
+}
+
+.home__partner__comment {
+  margin: 0.5em 0;
   padding: 5px;
   border: 1px solid #DDD;
   border-radius: 10px;

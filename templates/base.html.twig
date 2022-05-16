@@ -22,7 +22,8 @@
                 <p>{{ app.user.lastname }} {{ app.user.firstname }}</p>
                 <nav>
                     {% if app.user.roles[0] == 'ROLE_ADMIN' %}
-                        <a href="{{ path('admin') }}">Administration du site</a> -
+                        <a href="{{ path('admin') }}">Administration du site</a>
+                        <br>
                     {% endif %}
                     <a href="{{ path('profile') }}">Mon profil</a> -
                     <a href="{{ path('logout') }}">Se déconnecter</a>
