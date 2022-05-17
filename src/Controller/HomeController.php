@@ -26,7 +26,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/partner/{slug}', name: 'partner')]
-    public function show(PartnerRepository $partnerRepository, $slug): Response
+    public function show(NoteRepository $noteRepository, PartnerRepository $partnerRepository, $slug): Response
     {
         $partner = $partnerRepository->findOneBySlug($slug);
         $user = $this->getUser();
@@ -34,9 +34,23 @@ class HomeController extends AbstractController
         $comment = new Comment($partner, $user);
         $commentForm = $this->createForm(CommentType::class, $comment);
 
+        $like = $noteRepository->count(['partner' => $partner, 'note' => 1]);
+        $dislike = $noteRepository->count(['partner' => $partner, 'note' => -1]);
+
+        $userChoice = $noteRepository->findOneBy([
+            'user' => $user,
+            'partner' => $partner
+        ]);
+        if(!$userChoice) {
+            $userChoice = ['note' => 0];
+        }
+
         return $this->render('home/partner.html.twig', [
             'partner' => $partner,
-            'commentForm' => $commentForm->createView()
+            'commentForm' => $commentForm->createView(),
+            'like' => $like,
+            'dislike' => $dislike,
+            'userChoice' => $userChoice
         ]);
     }
 
@@ -58,14 +72,20 @@ class HomeController extends AbstractController
         ]);
         if(!$existingNote) {
             $manager->persist($note);
+            $message = 'NOTE_ADDED_SUCCESSFULLY';
+        } else if($existingNote->getNote() == $noteData) {
+            $existingNote->setNote(0);
+            $message = 'NOTE_DELETED_SUCCESSFULLY';
         } else {
             $existingNote->setNote($noteData);
+            $message = 'NOTE_EDITED_SUCCESSFULLY';
         }
 
         $manager->flush();
         
         return $this->json([
-            'code' => 'NOTE_ADDED_SUCCESSFULLY',
+            'code' => $message,
+            'note' => $noteData,
             'likeNumber' => $noteRepository->count(['partner' => $partner, 'note' => 1]),
             'dislikeNumber' => $noteRepository->count(['partner' => $partner, 'note' => -1])
         ]);

@@ -172,8 +172,18 @@ main {
   height: 75px;
 }
 
-.comment-btn:hover {
+.comment-btn:hover, .partner-like:hover, .partner-dislike:hover {
   cursor: pointer;
+}
+
+.partner-liked {
+  background-color: rgba(40, 167, 69, 0.25);
+  color: #28a745;
+}
+
+.partner-disliked {
+  background-color: rgba(220, 53, 69, 0.25);
+  color: #dc3545;
 }
 
 .profil h2, .profil hr {

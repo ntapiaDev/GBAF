@@ -35,8 +35,6 @@ class App {
             }
 
             const json = await response.json();
-            console.log(json.code);
-            console.log(json.message);
 
             const commentList = document.querySelector('.comment-list');
             const commentCount = document.querySelector('.comment-count');
@@ -56,8 +54,8 @@ class App {
 
     //Like & dislike
     likeAndDislike() {
-        const like = document.querySelector('.partner_like');
-        const dislike = document.querySelector('.partner_dislike');
+        const like = document.querySelector('.partner-like');
+        const dislike = document.querySelector('.partner-dislike');
         if(like === null) {
             return;
         }
@@ -66,7 +64,6 @@ class App {
         dislike.addEventListener('click', async (e) => setNote(e, -1));
 
         const setNote = async (e, note) => {
-            console.log(e.target.getAttribute('url'));
             let form = new FormData();
             form.append('note', note);
             const response = await fetch(`${e.target.getAttribute('url')}`, {
@@ -74,13 +71,46 @@ class App {
                 body: form
             });
 
-            console.log(response);
-
             if(!response.ok) {
                 return;
             }
 
             const json = await response.json();
+            console.log(json);
+
+            const like = document.querySelector('.partner-like');
+            const likeNumber = document.querySelector('.partner-like span');
+            const dislike = document.querySelector('.partner-dislike');
+            const dislikeNumber = document.querySelector('.partner-dislike span');
+            if(json.code === 'NOTE_ADDED_SUCCESSFULLY') {
+                if(json.note == 1) {
+                    like.classList.add('partner-liked');
+                    likeNumber.textContent = json.likeNumber;
+                } else if(json.note == -1) {
+                    dislike.classList.add('partner-disliked');
+                    dislikeNumber.textContent = json.dislikeNumber;
+                }
+            } else if(json.code === 'NOTE_EDITED_SUCCESSFULLY') {
+                if(json.note == 1) {
+                    like.classList.add('partner-liked');
+                    likeNumber.textContent = json.likeNumber;
+                    dislike.classList.remove('partner-disliked');
+                    dislikeNumber.textContent = json.dislikeNumber;
+                } else if(json.note == -1) {
+                    like.classList.remove('partner-liked');
+                    likeNumber.textContent = json.likeNumber;
+                    dislike.classList.add('partner-disliked');
+                    dislikeNumber.textContent = json.dislikeNumber;
+                }
+            } else if(json.code === 'NOTE_DELETED_SUCCESSFULLY') {
+                if(json.note == 1) {
+                    like.classList.remove('partner-liked');
+                    likeNumber.textContent = json.likeNumber;
+                } else if(json.note == -1) {
+                    dislike.classList.remove('partner-disliked');
+                    dislikeNumber.textContent = json.dislikeNumber;
+                }
+            }
         };
     }
 }
