@@ -20,15 +20,15 @@
 
     <section class="home__partners">
         <h2>Liste des partenaires :</h2>
-        {% for partner in partners %}
+        {% for i, partner in partners %}
             <article>
                 <img src="/uploads/{{ partner.logo }}" alt="{{ partner.partner }}">
                 <h3>{{ partner.partner }}</h3>
                 <hr>
                 <div class="home__partners__description">{{ partner.description|raw }}</div>
                 <div class="home__partners__links">
-                    <div>0 <span class="fa-solid fa-thumbs-up"></span></div>
-                    <div>0 <span class="fa-solid fa-thumbs-down"></span></div>
+                    <div>{{ likes[i] }} <span class="fa-solid fa-thumbs-up"></span></div>
+                    <div>{{ dislikes[i] }} <span class="fa-solid fa-thumbs-down"></span></div>
                     <p>{{ partner.comments|length }} commentaires</p>
                     <a href="{{ path('partner', { 'slug' : partner.slug }) }}">Lire la suite</a>
                 </div>

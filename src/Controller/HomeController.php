@@ -16,12 +16,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(PartnerRepository $partnerRepository): Response
+    public function index(NoteRepository $noteRepository, PartnerRepository $partnerRepository): Response
     {
         $partners = $partnerRepository->findAll();
 
+        $likeList = [];
+        $dislikeList = [];
+        foreach($partners as $partner) {
+            $like = $noteRepository->count(['partner' => $partner, 'note' => 1]);
+            array_push($likeList, $like);
+            $dislike = $noteRepository->count(['partner' => $partner, 'note' => -1]);
+            array_push($dislikeList, $dislike);
+        }
+
         return $this->render('home/index.html.twig', [
-            'partners' => $partners
+            'partners' => $partners,
+            'likes' => $likeList,
+            'dislikes' => $dislikeList
         ]);
     }
 
