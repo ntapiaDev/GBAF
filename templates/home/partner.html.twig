@@ -10,7 +10,7 @@
                 <p>{{ partner.description|raw }}</p>
             </article>
             <aside>
-                <div class="home__partner__links">
+                <div id="notes" class="home__partner__links">
                     <p><span class="comment-count">{{ partner.comments|length }}</span> commentaires</p>
                     <p class="comment-btn">Nouveau commentaire</p>
                     <div class="partner-like {{ userChoice.note == 1 ? 'partner-liked' : '' }}" url="/partner/{{ partner.slug }}/note"><span>{{ like }}</span> <span class="fa-solid fa-thumbs-up" url="/partner/{{ partner.slug }}/note"></span></div>

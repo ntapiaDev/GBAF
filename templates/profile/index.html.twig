@@ -51,6 +51,12 @@
     </section>
     <aside class="profil__notes">
         <h3>Mes notes</h3>
+        {% for note in notes|reverse %}
+            <div class="profil__partner__note">
+            <a href="{{ path('partner', { 'slug' : note.partner.slug }) }}#notes">
+                <p><strong>{{ note.partner }} :</strong> {{ note.note == 1 ? 'Recommandé' : note.note == -1 ? 'Non recommandé' : 'Note retirée' }}</p>
+            </div>
+        {% endfor %}
     </aside>
     <aside class="profil__comments">
         <h3>Mes commentaires</h3>
@@ -63,7 +69,6 @@
                     <p><strong>Commentaire :</strong> {{ comment.comment }}</p>
                 </a>
             </div>
-            
         {% endfor %}
     </aside>
 {% endblock %}

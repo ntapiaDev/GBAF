@@ -122,7 +122,7 @@ main {
 // Hérite de home +
 .home, .profil {
     &__partner {
-        &__comment {
+        &__comment, &__note {
             margin: 0.5em 0;
             padding: 5px;
             border: 1px solid #DDD;

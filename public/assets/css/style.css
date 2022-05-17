@@ -136,7 +136,7 @@ main {
   font-size: 0.8em;
 }
 
-.home__partner__comment, .profil__partner__comment {
+.home__partner__comment, .home__partner__note, .profil__partner__comment, .profil__partner__note {
   margin: 0.5em 0;
   padding: 5px;
   border: 1px solid #DDD;
@@ -145,7 +145,7 @@ main {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.home__partner__comment hr, .profil__partner__comment hr {
+.home__partner__comment hr, .home__partner__note hr, .profil__partner__comment hr, .profil__partner__note hr {
   margin: 0.5em 0;
   border: 1px dashed rgba(24, 24, 24, 0.25);
 }
