@@ -38,16 +38,32 @@ class CommentController extends AbstractController
         $comment->setComment($commentData['comment']);
         $comment->setCreatedAt(new \DateTimeImmutable());
 
-        $manager->persist($comment);
+        $existingComment = $commentRepository->findOneBy([
+            'user' => $user,
+            'partner' => $partner
+        ]);
+        if(!$existingComment) {
+            $manager->persist($comment);
+            $message = 'COMMENT_ADDED_SUCCESSFULLY';
+            $commentId = null;
+        } else {
+            $existingComment->setComment($commentData['comment']);
+            $existingComment->setCreatedAt(new \DateTimeImmutable());
+            $commentId = $existingComment->getId();
+            $comment->setId($commentId);
+            $message = 'COMMENT_EDITED_SUCCESSFULLY';
+        }
+
         $manager->flush();
 
         $html = $this->renderView('comment/index.html.twig', [
-            'comment' => $comment
+            'comment' => $comment,
         ]);
 
         return $this->json([
-            'code' => 'COMMENT_ADDED_SUCCESSFULLY',
+            'code' => $message,
             'message' => $html,
+            'id' => $commentId,
             'commentsNumber' => $commentRepository->count(['partner' => $partner])
         ]);
     }

@@ -13,8 +13,8 @@
                 <div class="home__partner__links">
                     <p><span class="comment-count">{{ partner.comments|length }}</span> commentaires</p>
                     <p class="comment-btn">Nouveau commentaire</p>
-                    <div>2 <span class="fa-solid fa-thumbs-up"></span></div>
-                    <div>1 <span class="fa-solid fa-thumbs-down"></span></div>
+                    <div class="partner_like" url="/partner/{{ partner.slug }}/note">2 <span class="fa-solid fa-thumbs-up" url="/partner/{{ partner.slug }}/note"></span></div>
+                    <div class="partner_dislike" url="/partner/{{ partner.slug }}/note">1 <span class="fa-solid fa-thumbs-down" url="/partner/{{ partner.slug }}/note"></span></div>
                 </div>
                 <div class="home__partner__commentForm">
                     {{ form(commentForm, { 'attr':  { 'class': 'comment-form'}}) }}

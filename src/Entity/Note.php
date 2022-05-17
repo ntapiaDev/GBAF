@@ -4,8 +4,15 @@ namespace App\Entity;
 
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: NoteRepository::class)]
+#[UniqueEntity(
+    fields: ['user', 'partner'],
+    errorPath: 'user',
+    message: 'Vous avez déjà voté pour ce partenaire'
+)]
 class Note
 {
     #[ORM\Id]
@@ -15,13 +22,15 @@ class Note
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'notes')]
     #[ORM\JoinColumn(nullable: false)]
-    private $user_id;
+    private $user;
 
     #[ORM\ManyToOne(targetEntity: Partner::class, inversedBy: 'notes')]
     #[ORM\JoinColumn(nullable: false)]
-    private $partner_id;
+    private $partner;
 
     #[ORM\Column(type: 'integer')]
+    #[Assert\GreaterThan(-2)]
+    #[Assert\LessThan(2)]
     private $note;
 
     public function getId(): ?int
@@ -29,26 +38,26 @@ class Note
         return $this->id;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?User
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUser(?User $user): self
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getPartnerId(): ?Partner
+    public function getPartner(): ?Partner
     {
-        return $this->partner_id;
+        return $this->partner;
     }
 
-    public function setPartnerId(?Partner $partner_id): self
+    public function setPartner(?Partner $partner): self
     {
-        $this->partner_id = $partner_id;
+        $this->partner = $partner;
 
         return $this;
     }

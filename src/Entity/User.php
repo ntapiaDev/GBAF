@@ -43,7 +43,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
     private $comments;
 
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Note::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Note::class, orphanRemoval: true)]
     private $notes;
 
     public function __construct()
@@ -212,7 +212,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->notes->contains($note)) {
             $this->notes[] = $note;
-            $note->setUserId($this);
+            $note->setUser($this);
         }
 
         return $this;
@@ -222,8 +222,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->notes->removeElement($note)) {
             // set the owning side to null (unless already changed)
-            if ($note->getUserId() === $this) {
-                $note->setUserId(null);
+            if ($note->getUser() === $this) {
+                $note->setUser(null);
             }
         }
 

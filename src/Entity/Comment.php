@@ -4,8 +4,14 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
+#[UniqueEntity(
+    fields: ['user', 'partner'],
+    errorPath: 'user',
+    message: 'Vous avez déjà commenté ce partenaire'
+)]
 class Comment
 {
     #[ORM\Id]
@@ -36,6 +42,13 @@ class Comment
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getUser(): ?User
