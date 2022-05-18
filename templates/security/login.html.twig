@@ -37,7 +37,11 @@
         </form>
 
         <div class="login__links">
-            <p><a href="">J'ai oublié mon mot de passe...</a></p>
+            <p class="display-reset">J'ai oublié mon mot de passe...</p>
+            <aside class="login__resetPassword">
+                {{ form(pwForm, { 'attr':  { 'class': 'reset-form'}}) }}
+            </aside>
+            <p class="reset__message"></p>
             <p><a href="{{ path('register') }}">Créer un compte</a></p>
         </div>
     </section>

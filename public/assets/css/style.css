@@ -219,13 +219,13 @@ main {
   list-style: none;
 }
 
-.login__form label, .login__form input, .login__form select, .login__form button, .register__form label, .register__form input, .register__form select, .register__form button, .profil__form label, .profil__form input, .profil__form select, .profil__form button {
+.login__form label, .login__form input, .login__form select, .login__form button, .login__resetPassword label, .login__resetPassword input, .login__resetPassword select, .login__resetPassword button, .register__form label, .register__form input, .register__form select, .register__form button, .register__resetPassword label, .register__resetPassword input, .register__resetPassword select, .register__resetPassword button, .profil__form label, .profil__form input, .profil__form select, .profil__form button, .profil__resetPassword label, .profil__resetPassword input, .profil__resetPassword select, .profil__resetPassword button {
   width: 100%;
   margin: 0.5em 0;
   padding: 2px;
 }
 
-.login__form__checkbox input, .register__form__checkbox input, .profil__form__checkbox input {
+.login__form__checkbox input, .login__resetPassword__checkbox input, .register__form__checkbox input, .register__resetPassword__checkbox input, .profil__form__checkbox input, .profil__resetPassword__checkbox input {
   width: unset;
 }
 
@@ -233,7 +233,19 @@ main {
   margin: 0.5em 0;
 }
 
+.login__resetPassword, .register__resetPassword, .profil__resetPassword {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
+}
+
+.login__resetPassword.reset-visible, .register__resetPassword.reset-visible, .profil__resetPassword.reset-visible {
+  height: 325px;
+}
+
 .error, .success {
+  margin-bottom: 0.5em;
   padding: 5px;
   background-color: rgba(220, 53, 69, 0.25);
   border: 1px solid #dc3545;

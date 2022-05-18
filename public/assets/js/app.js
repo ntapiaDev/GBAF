@@ -4,6 +4,8 @@ class App {
         this.displayCommentForm();
         this.handleCommentForm();
         this.likeAndDislike();
+        this.displayResetForm();
+        this.resetPassword();
     }
 
     //Commentaires
@@ -112,6 +114,45 @@ class App {
                 }
             }
         };
+    }
+
+    //Reset Password AJAX
+
+    displayResetForm() {
+        const displayBtn = document.querySelector('.display-reset');
+        const resetForm = document.querySelector('.login__resetPassword');
+        if(resetForm === null) {
+            return;
+        }
+        displayBtn.addEventListener('click', () => resetForm.classList.toggle('reset-visible'));
+    }
+
+    resetPassword() {
+        const resetForm = document.querySelector('.reset-form')
+        if(resetForm === null) {
+            return;
+        }
+        resetForm.addEventListener('submit', async(e) => {
+            e.preventDefault();
+
+            const response = await fetch('/connexion/reset', {
+                method: 'POST',
+                body: new FormData(e.target)
+            });
+
+            const json = await response.json();
+            console.log(json);
+
+            const message = document.querySelector('.reset__message');
+            if(json.code !== 'PASSWORD CHANGED') {
+                message.classList.add('error');
+                message.classList.remove('success');
+            } else {
+                message.classList.add('success');
+                message.classList.remove('error');
+            }
+            message.textContent = json.message;
+        })
     }
 }
 
